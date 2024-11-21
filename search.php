@@ -30,72 +30,31 @@ $platformsStmt->execute();
 $platforms = $platformsStmt->get_result();
 ?>
 
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Search Results for "<?= htmlspecialchars($_GET['q']) ?>"</h1>
+<h1>Search Results for "<?= htmlspecialchars($_GET['q']) ?>"</h1>
 
-    <div class="row">
-        <!-- Actors Section -->
-        <div class="col-12 mb-4">
-            <h2>Actors</h2>
-            <div class="row">
-                <?php while ($actor = $actors->fetch_assoc()) { ?>
-                    <div class="col-md-4">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <a href="courses-by-instructor.php?id=<?= $actor['actor_id'] ?>">
-                                        <?= $actor['actor_name'] ?>
-                                    </a>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
+<!-- Actors -->
+<h2>Actors</h2>
+<ul>
+  <?php while ($actor = $actors->fetch_assoc()) { ?>
+    <li><a href="courses-by-instructor.php?id=<?= $actor['actor_id'] ?>"><?= $actor['actor_name'] ?></a></li>
+  <?php } ?>
+</ul>
 
-        <!-- Shows Section -->
-        <div class="col-12 mb-4">
-            <h2>Shows</h2>
-            <div class="row">
-                <?php while ($show = $shows->fetch_assoc()) { ?>
-                    <div class="col-md-4">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <a href="sections-by-course.php?cid=<?= $show['show_id'] ?>">
-                                        <?= $show['show_title'] ?>
-                                    </a>
-                                </h5>
-                                <p class="card-text"><strong>Genre:</strong> <?= $show['genre'] ?></p>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
+<!-- Shows -->
+<h2>Shows</h2>
+<ul>
+  <?php while ($show = $shows->fetch_assoc()) { ?>
+    <li><?= $show['show_title'] ?> (<?= $show['genre'] ?>)</li>
+  <?php } ?>
+</ul>
 
-        <!-- Platforms Section -->
-        <div class="col-12">
-            <h2>Platforms</h2>
-            <div class="row">
-                <?php while ($platform = $platforms->fetch_assoc()) { ?>
-                    <div class="col-md-4">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <a href="shows-by-platform.php?cid=<?= $platform['platform_id'] ?>">
-                                        <?= $platform['platform_name'] ?>
-                                    </a>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Platforms -->
+<h2>Platforms</h2>
+<ul>
+  <?php while ($platform = $platforms->fetch_assoc()) { ?>
+    <li><?= $platform['platform_name'] ?></li>
+  <?php } ?>
+</ul>
 
 <?php
 $conn->close();
