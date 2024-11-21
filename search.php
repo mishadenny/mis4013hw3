@@ -34,27 +34,27 @@ $platforms = $platformsStmt->get_result();
 
 <!-- Actors -->
 <h2>Actors</h2>
-<ul>
+<div>
   <?php while ($actor = $actors->fetch_assoc()) { ?>
-    <li><a href="courses-by-instructor.php?id=<?= $actor['actor_id'] ?>"><?= $actor['actor_name'] ?></a></li>
+    <div><a href="courses-by-instructor.php?id=<?= $actor['actor_id'] ?>"><?= $actor['actor_name'] ?></a></div>
   <?php } ?>
-</ul>
+</div>
 
 <!-- Shows -->
 <h2>Shows</h2>
-<ul>
+<div>
   <?php while ($show = $shows->fetch_assoc()) { ?>
-    <li><?= $show['show_title'] ?> (<?= $show['genre'] ?>)</li>
+    <div><?= $show['show_title'] ?> (<?= $show['genre'] ?>)</div>
   <?php } ?>
-</ul>
+</div>
 
 <!-- Platforms -->
 <h2>Platforms</h2>
-<ul>
+<div>
   <?php while ($platform = $platforms->fetch_assoc()) { ?>
-    <li><?= $platform['platform_name'] ?></li>
+    <div><?= $platform['platform_name'] ?></div>
   <?php } ?>
-</ul>
+</div>
 
 <?php
 $conn->close();
