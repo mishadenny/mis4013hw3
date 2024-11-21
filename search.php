@@ -42,8 +42,11 @@ $platforms = $platformsStmt->get_result();
                     <div class="col-md-4">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $actor['actor_name'] ?></h5>
-                                <a href="courses-by-instructor.php?id=<?= $actor['actor_id'] ?>" class="btn btn-primary">View Shows</a>
+                                <h5 class="card-title">
+                                    <a href="courses-by-instructor.php?id=<?= $actor['actor_id'] ?>">
+                                        <?= $actor['actor_name'] ?>
+                                    </a>
+                                </h5>
                             </div>
                         </div>
                     </div>
@@ -59,7 +62,11 @@ $platforms = $platformsStmt->get_result();
                     <div class="col-md-4">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $show['show_title'] ?></h5>
+                                <h5 class="card-title">
+                                    <a href="sections-by-course.php?cid=<?= $show['show_id'] ?>">
+                                        <?= $show['show_title'] ?>
+                                    </a>
+                                </h5>
                                 <p class="card-text"><strong>Genre:</strong> <?= $show['genre'] ?></p>
                             </div>
                         </div>
@@ -76,7 +83,11 @@ $platforms = $platformsStmt->get_result();
                     <div class="col-md-4">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $platform['platform_name'] ?></h5>
+                                <h5 class="card-title">
+                                    <a href="shows-by-platform.php?cid=<?= $platform['platform_id'] ?>">
+                                        <?= $platform['platform_name'] ?>
+                                    </a>
+                                </h5>
                             </div>
                         </div>
                     </div>
