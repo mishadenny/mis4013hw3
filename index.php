@@ -8,3 +8,4 @@ include "view-header.php";
 <?php
 include "view-footer.php";
 ?>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
