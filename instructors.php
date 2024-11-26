@@ -5,10 +5,36 @@ require_once("model-instructors.php");
 $pageTitle = "Actors";
 include "view-header.php"; 
 
+if (isset($_POST['actionType'])) {
+  switch ($_POST['actionType']) {
+    case "Add":
+      if (insertActor($_POST['aName'], $_POST['aAge'])) {
+        echo '<div class="alert alert-success" role="alert">Actor Added </div>';
+      } else {
+        echo '<div class="alert alert-danger" role="alert">Error </div>';
+      }
+      break;
+    case "Edit":
+      if (updateActor($_POST['aName'], $_POST['aAge'], $_POST['iid'])) {
+        echo '<div class="alert alert-success" role="alert">Actor updated </div>';
+      } else {
+        echo '<div class="alert alert-danger" role="alert">Error </div>';
+      }
+      break;
+    case "Delete":
+      if (deleteActor($_POST['iid'])) {
+        echo '<div class="alert alert-success" role="alert">Actor Deleted </div>';
+      } else {
+        echo '<div class="alert alert-danger" role="alert">Error </div>';
+      }
+      break;
+  }
+}
+
 // Fetch actors
 $instructors = selectInstructors();
-
 ?>
+
 <div class="container mt-5">
     <h1 class="text-center mb-4">Actors</h1>
 
@@ -19,14 +45,38 @@ $instructors = selectInstructors();
         <button class="btn btn-primary" data-sort-value="age">Age</button>
     </div>
 
-    <!-- Grid of Actors -->
+    <!-- Actors Table -->
     <div class="grid">
-        <?php while ($actor = $instructors->fetch_assoc()) { ?>
-            <div class="element-item" data-category="<?= $actor['actor_name'] ?>">
-                <h2 class="name"><?= $actor['actor_name'] ?></h2>
-                <p class="age"><?= $actor['age'] ?></p>
-            </div>
-        <?php } ?>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="name">Name</th>
+                    <th class="age">Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($actor = $instructors->fetch_assoc()) { ?>
+                    <tr class="element-item" data-category="<?= $actor['actor_name'] ?>">
+                        <td class="name"><?= $actor['actor_name'] ?></td>
+                        <td class="age"><?= $actor['age'] ?></td>
+                        <td>
+                            <!-- Action Buttons -->
+                            <form method="post" style="display: inline-block;">
+                                <input type="hidden" name="iid" value="<?= $actor['actor_id'] ?>">
+                                <input type="hidden" name="actionType" value="Edit">
+                                <button type="submit" class="btn btn-sm btn-primary">Edit</button>
+                            </form>
+                            <form method="post" style="display: inline-block;">
+                                <input type="hidden" name="iid" value="<?= $actor['actor_id'] ?>">
+                                <input type="hidden" name="actionType" value="Delete">
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -36,7 +86,7 @@ $instructors = selectInstructors();
   // Initialize Isotope
   var $grid = $('.grid').isotope({
     itemSelector: '.element-item',
-    layoutMode: 'fitRows',
+    layoutMode: 'vertical',
     getSortData: {
       name: '.name', // Sort by name
       age: '.age parseInt' // Sort by age
@@ -58,6 +108,7 @@ $instructors = selectInstructors();
     });
   });
 </script>
+
 <?php
 include "view-footer.php";
 ?>
