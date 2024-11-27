@@ -10,8 +10,8 @@
 </div>
 <div class="sort-by-button-group">
   <button data-sort-value="original-order" class="is-checked">Original Order</button>
-  <button data-sort-value="name">Sort by Name</button>
-  <button data-sort-value="age">Sort by Age</button>
+  <button data-sort-value="name">Name</button>
+  <button data-sort-value="age">Age</button>
 </div>
 
 <div class="table-responsive">
