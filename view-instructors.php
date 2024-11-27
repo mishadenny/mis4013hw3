@@ -56,28 +56,39 @@ function sortTable(columnIndex) {
   var table, rows, switching, i, x, y, shouldSwitch, isNumeric;
   table = document.getElementById("actorsTable");
   switching = true;
-   isNumeric = columnIndex === 0 || columnIndex === 2;
+
+  // Determine if the column should be sorted numerically
+  isNumeric = columnIndex === 0 || columnIndex === 2; // Columns 0 (ID) and 2 (Age)
+
   while (switching) {
     switching = false;
     rows = table.rows;
+
     for (i = 1; i < (rows.length - 1); i++) {
       shouldSwitch = false;
       x = rows[i].getElementsByTagName("TD")[columnIndex];
       y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
-            if (isNumeric) {
+
+      if (isNumeric) {
+        // Compare as numbers
         if (parseInt(x.innerHTML) > parseInt(y.innerHTML)) {
           shouldSwitch = true;
           break;
         }
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        shouldSwitch = true;
-        break;
+      } else {
+        // Compare as strings
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
       }
     }
+
     if (shouldSwitch) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
     }
   }
 }
+
 </script>
