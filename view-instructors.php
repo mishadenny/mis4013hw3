@@ -54,26 +54,30 @@
 </div>
 
 <script>
-  // Initialize Isotope on the table body
-  var $grid = $('.grid').isotope({
-    itemSelector: '.element-item',
-    layoutMode: 'vertical',
-    getSortData: {
-      name: '[data-name]', // sort by name attribute
-      age: '[data-age parseInt]' // sort by age attribute as integer
-    }
-  });
+  $(document).ready(function () {
+    // Initialize Isotope on the table body
+    var $grid = $('.grid').isotope({
+      itemSelector: '.element-item',
+      layoutMode: 'vertical',
+      getSortData: {
+        name: '[data-name]', // sort by name attribute
+        age: '[data-age parseInt]' // sort by age attribute as integer
+      }
+    });
 
-  // Bind button clicks for sorting
-  $('.sort-by-button-group').on('click', 'button', function () {
-    var sortValue = $(this).attr('data-sort-value');
-    $grid.isotope({ sortBy: sortValue });
-  });
+    // Bind button clicks for sorting
+    $('.sort-by-button-group').on('click', 'button', function () {
+      var sortValue = $(this).attr('data-sort-value');
+      $grid.isotope({ sortBy: sortValue });
+    });
 
-  // Change active button class
-  $('.sort-by-button-group').on('click', 'button', function () {
-    $('.sort-by-button-group .is-checked').removeClass('is-checked');
-    $(this).addClass('is-checked');
+    // Change active button class
+    $('.sort-by-button-group').on('click', 'button', function () {
+      $('.sort-by-button-group .is-checked').removeClass('is-checked');
+      $(this).addClass('is-checked');
+    });
   });
 </script>
+
+<!-- Include Isotope library -->
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
