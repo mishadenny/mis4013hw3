@@ -1,30 +1,3 @@
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 12px;
-    }
-
-    th {
-      background-color: #f4f4f4;
-    }
-
-    tbody tr:nth-child(odd) {
-      background-color: #f9f9f9; /* Light gray for odd rows */
-    }
-
-    tbody tr:nth-child(even) {
-      background-color: #ffffff; /* White for even rows */
-    }
-
-    tbody tr:hover {
-      background-color: #dcdcdc; /* Slight highlight on hover */
-    }
-  </style>
 <div class="row">
   <div class="col">
     <h1>Actors</h1>
