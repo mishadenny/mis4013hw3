@@ -9,9 +9,9 @@
 
 <p>Click the buttons below to sort the table:</p>
 <p>
-  <button onclick="sortTable(0)">Sort by ID</button>
-  <button onclick="sortTable(1)">Sort by Name</button>
-  <button onclick="sortTable(2)">Sort by Age</button>
+  <button onclick="sortTable(0)">ID</button>
+  <button onclick="sortTable(1)">Name</button>
+  <button onclick="sortTable(2)">Age</button>
 </p>
 
 <div class="table-responsive">
