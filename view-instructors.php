@@ -41,7 +41,7 @@
 </p>
 
 <div class="table-responsive">
-  <table id="actorsTable" class="table">
+  <table id="actorsTable" class="table table=striped">
     <thead>
       <tr>
         <th>ID</th>
