@@ -13,7 +13,6 @@
   <button data-sort-value="name">Name</button>
   <button data-sort-value="age">Age</button>
 </div>
-
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -62,4 +61,27 @@
     </tbody>
   </table>
 </div>
+<script>
+  // Initialize Isotope on the table body
+  var $grid = $('.grid').isotope({
+    itemSelector: '.element-item',
+    layoutMode: 'vertical',
+    getSortData: {
+      name: '[data-name]', // sort by name
+      age: '[data-age parseInt]' // sort by age
+    }
+  });
+
+  // Bind button clicks for sorting
+  $('.sort-by-button-group').on('click', 'button', function () {
+    var sortValue = $(this).attr('data-sort-value');
+    $grid.isotope({ sortBy: sortValue });
+  });
+
+  // Change active button class
+  $('.sort-by-button-group').on('click', 'button', function () {
+    $('.sort-by-button-group .is-checked').removeClass('is-checked');
+    $(this).addClass('is-checked');
+  });
+</script>
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
