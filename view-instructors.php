@@ -7,14 +7,15 @@
   </div>
 </div>
 
-<div class="button-group sort-by-button-group">
-  <button class="button is-checked" data-sort-value="original-order">Original Order</button>
-  <button class="button" data-sort-value="name">Name</button>
-  <button class="button" data-sort-value="age">Age</button>
-</div>
+<p>Click the buttons below to sort the table:</p>
+<p>
+  <button onclick="sortTable(0)">Sort by ID</button>
+  <button onclick="sortTable(1)">Sort by Name</button>
+  <button onclick="sortTable(2)">Sort by Age</button>
+</p>
 
 <div class="table-responsive">
-  <table class="table grid">
+  <table id="actorsTable" class="table">
     <thead>
       <tr>
         <th>ID</th>
@@ -26,11 +27,12 @@
       </tr>
     </thead>
     <tbody>
-      <?php while ($instructor = $instructors->fetch_assoc()) { ?>
-        <tr class="element-item" data-name="<?php echo $instructor['actor_name']; ?>" data-age="<?php echo $instructor['age']; ?>">
+      <?php 
+        while ($instructor = $instructors->fetch_assoc()) { ?>
+        <tr>
           <td><?php echo $instructor['actor_id']; ?></td>
-          <td class="name"><?php echo $instructor['actor_name']; ?></td>
-          <td class="age"><?php echo $instructor['age']; ?></td>
+          <td><?php echo $instructor['actor_name']; ?></td>
+          <td><?php echo $instructor['age']; ?></td>
           <td>
             <?php include "view-actors-editform.php"; ?>
           </td>
@@ -38,7 +40,9 @@
             <form method="post" action="">
               <input type="hidden" name="iid" value="<?php echo $instructor['actor_id']; ?>">
               <input type="hidden" name="actionType" value="Delete">
-              <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">Delete</button>
+              <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
+                Delete
+              </button>
             </form>
           </td>
           <td><a href="courses-by-instructor.php?id=<?php echo $instructor['actor_id']; ?>">Shows</a></td>
@@ -48,30 +52,27 @@
   </table>
 </div>
 
-<!-- Include Isotope library -->
-<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Initialize Isotope
-    var $grid = $('.grid').isotope({
-      itemSelector: '.element-item', // Target table rows as items
-      layoutMode: 'vertical',        // Keep vertical stacking for table rows
-      getSortData: {
-        name: '[data-name]',          // Sort by data-name attribute
-        age: '[data-age parseInt]'    // Sort by data-age attribute as integer
+function sortTable(columnIndex) {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("actorsTable");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[columnIndex];
+      y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
       }
-    });
-
-    // Bind sorting buttons
-    $('.sort-by-button-group').on('click', 'button', function () {
-      var sortValue = $(this).attr('data-sort-value');
-      $grid.isotope({ sortBy: sortValue }); // Trigger sorting
-    });
-
-    // Update active button class
-    $('.sort-by-button-group').on('click', 'button', function () {
-      $('.sort-by-button-group .is-checked').removeClass('is-checked');
-      $(this).addClass('is-checked');
-    });
-  });
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
 </script>
