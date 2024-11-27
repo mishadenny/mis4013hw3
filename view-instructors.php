@@ -7,7 +7,6 @@
   </div>
 </div>
 
-<p>Click the buttons below to sort the table:</p>
 <p>
   <button onclick="sortTable(0)">ID</button>
   <button onclick="sortTable(1)">Name</button>
@@ -54,9 +53,10 @@
 
 <script>
 function sortTable(columnIndex) {
-  var table, rows, switching, i, x, y, shouldSwitch;
+  var table, rows, switching, i, x, y, shouldSwitch, isNumeric;
   table = document.getElementById("actorsTable");
   switching = true;
+   isNumeric = columnIndex === 0 || columnIndex === 2;
   while (switching) {
     switching = false;
     rows = table.rows;
@@ -64,6 +64,11 @@ function sortTable(columnIndex) {
       shouldSwitch = false;
       x = rows[i].getElementsByTagName("TD")[columnIndex];
       y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+            if (isNumeric) {
+        if (parseInt(x.innerHTML) > parseInt(y.innerHTML)) {
+          shouldSwitch = true;
+          break;
+        }
       if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
         shouldSwitch = true;
         break;
