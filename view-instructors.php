@@ -52,23 +52,23 @@
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Initialize Isotope on the table
+    // Initialize Isotope
     var $grid = $('.grid').isotope({
-      itemSelector: '.element-item', // Target the table rows
-      layoutMode: 'vertical',        // Maintain vertical stacking
+      itemSelector: '.element-item', // Target table rows as items
+      layoutMode: 'vertical',        // Keep vertical stacking for table rows
       getSortData: {
-        name: '[data-name]',          // Sort by name attribute
-        age: '[data-age parseInt]'    // Sort by age attribute as integer
+        name: '[data-name]',          // Sort by data-name attribute
+        age: '[data-age parseInt]'    // Sort by data-age attribute as integer
       }
     });
 
     // Bind sorting buttons
     $('.sort-by-button-group').on('click', 'button', function () {
       var sortValue = $(this).attr('data-sort-value');
-      $grid.isotope({ sortBy: sortValue });
+      $grid.isotope({ sortBy: sortValue }); // Trigger sorting
     });
 
-    // Change active button class
+    // Update active button class
     $('.sort-by-button-group').on('click', 'button', function () {
       $('.sort-by-button-group .is-checked').removeClass('is-checked');
       $(this).addClass('is-checked');
