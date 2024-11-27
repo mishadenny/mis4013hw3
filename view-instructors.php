@@ -7,25 +7,25 @@
   </div>
 </div>
 
-<div class="sort-by-button-group">
-  <button data-sort-value="original-order" class="is-checked">Original Order</button>
-  <button data-sort-value="name">Name</button>
-  <button data-sort-value="age">Age</button>
+<div class="button-group sort-by-button-group">
+  <button class="button is-checked" data-sort-value="original-order">Original Order</button>
+  <button class="button" data-sort-value="name">Name</button>
+  <button class="button" data-sort-value="age">Age</button>
 </div>
 
 <div class="table-responsive">
-  <table class="table">
+  <table class="table grid">
     <thead>
       <tr>
         <th>ID</th>
         <th>Name</th>
         <th>Age</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Shows</th>
       </tr>
     </thead>
-    <tbody class="grid">
+    <tbody>
       <?php while ($instructor = $instructors->fetch_assoc()) { ?>
         <tr class="element-item" data-name="<?php echo $instructor['actor_name']; ?>" data-age="<?php echo $instructor['age']; ?>">
           <td><?php echo $instructor['actor_id']; ?></td>
@@ -38,12 +38,7 @@
             <form method="post" action="">
               <input type="hidden" name="iid" value="<?php echo $instructor['actor_id']; ?>">
               <input type="hidden" name="actionType" value="Delete">
-              <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                </svg>
-              </button>
+              <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">Delete</button>
             </form>
           </td>
           <td><a href="courses-by-instructor.php?id=<?php echo $instructor['actor_id']; ?>">Shows</a></td>
@@ -52,32 +47,25 @@
     </tbody>
   </table>
 </div>
+// Initialize Isotope on the table
+var $grid = $('.grid').isotope({
+  itemSelector: '.element-item', // Target the table rows
+  layoutMode: 'vertical',        // Maintain vertical stacking
+  getSortData: {
+    name: '[data-name]',          // Sort by name attribute
+    age: '[data-age parseInt]'    // Sort by age attribute as integer
+  }
+});
 
-<script>
-  $(document).ready(function () {
-    // Initialize Isotope on the table body
-    var $grid = $('.grid').isotope({
-      itemSelector: '.element-item',
-      layoutMode: 'vertical',
-      getSortData: {
-        name: '[data-name]', // sort by name attribute
-        age: '[data-age parseInt]' // sort by age attribute as integer
-      }
-    });
+// Bind sorting buttons
+$('.sort-by-button-group').on('click', 'button', function () {
+  var sortValue = $(this).attr('data-sort-value');
+  $grid.isotope({ sortBy: sortValue });
+});
 
-    // Bind button clicks for sorting
-    $('.sort-by-button-group').on('click', 'button', function () {
-      var sortValue = $(this).attr('data-sort-value');
-      $grid.isotope({ sortBy: sortValue });
-    });
-
-    // Change active button class
-    $('.sort-by-button-group').on('click', 'button', function () {
-      $('.sort-by-button-group .is-checked').removeClass('is-checked');
-      $(this).addClass('is-checked');
-    });
-  });
-</script>
-
-<!-- Include Isotope library -->
+// Change active button class
+$('.sort-by-button-group').on('click', 'button', function () {
+  $('.sort-by-button-group .is-checked').removeClass('is-checked');
+  $(this).addClass('is-checked');
+});
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
