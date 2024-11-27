@@ -1,6 +1,11 @@
+<!DOCTYPE html>
+<html>
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head><div class="row">
+</head>
+<body>
+
+<div class="row">
   <div class="col">
     <h1>Actors</h1>
   </div>
@@ -10,13 +15,13 @@
 </div>
 
 <p>
-  <button onclick="sortTable(0)">ID</button>
-  <button onclick="sortTable(1)">Name</button>
-  <button onclick="sortTable(2)">Age</button>
+  <button onclick="sortTable(0)" class="btn btn-secondary">ID</button>
+  <button onclick="sortTable(1)" class="btn btn-secondary">Name</button>
+  <button onclick="sortTable(2)" class="btn btn-secondary">Age</button>
 </p>
 
 <div class="table-responsive">
-  <table id="actorsTable" class="table table=striped">
+  <table id="actorsTable" class="table table-striped">
     <thead>
       <tr>
         <th>ID</th>
@@ -46,7 +51,7 @@
               </button>
             </form>
           </td>
-          <td><a href="courses-by-instructor.php?id=<?php echo $instructor['actor_id']; ?>">Shows</a></td>
+          <td><a href="courses-by-instructor.php?id=<?php echo $instructor['actor_id']; ?>" class="btn btn-info">Shows</a></td>
         </tr>
       <?php } ?>
     </tbody>
@@ -92,5 +97,7 @@ function sortTable(columnIndex) {
     }
   }
 }
-
 </script>
+
+</body>
+</html>
