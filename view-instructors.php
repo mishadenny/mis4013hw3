@@ -47,25 +47,31 @@
     </tbody>
   </table>
 </div>
-// Initialize Isotope on the table
-var $grid = $('.grid').isotope({
-  itemSelector: '.element-item', // Target the table rows
-  layoutMode: 'vertical',        // Maintain vertical stacking
-  getSortData: {
-    name: '[data-name]',          // Sort by name attribute
-    age: '[data-age parseInt]'    // Sort by age attribute as integer
-  }
-});
 
-// Bind sorting buttons
-$('.sort-by-button-group').on('click', 'button', function () {
-  var sortValue = $(this).attr('data-sort-value');
-  $grid.isotope({ sortBy: sortValue });
-});
-
-// Change active button class
-$('.sort-by-button-group').on('click', 'button', function () {
-  $('.sort-by-button-group .is-checked').removeClass('is-checked');
-  $(this).addClass('is-checked');
-});
+<!-- Include Isotope library -->
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initialize Isotope on the table
+    var $grid = $('.grid').isotope({
+      itemSelector: '.element-item', // Target the table rows
+      layoutMode: 'vertical',        // Maintain vertical stacking
+      getSortData: {
+        name: '[data-name]',          // Sort by name attribute
+        age: '[data-age parseInt]'    // Sort by age attribute as integer
+      }
+    });
+
+    // Bind sorting buttons
+    $('.sort-by-button-group').on('click', 'button', function () {
+      var sortValue = $(this).attr('data-sort-value');
+      $grid.isotope({ sortBy: sortValue });
+    });
+
+    // Change active button class
+    $('.sort-by-button-group').on('click', 'button', function () {
+      $('.sort-by-button-group .is-checked').removeClass('is-checked');
+      $(this).addClass('is-checked');
+    });
+  });
+</script>
