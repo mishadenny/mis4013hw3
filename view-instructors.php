@@ -1,16 +1,17 @@
   <style>
     table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: collapse; /* Ensure borders don't create gaps */
     }
 
     th, td {
       text-align: left;
       padding: 12px;
+      border: 1px solid #ddd; /* Add borders for clarity */
     }
 
     th {
-      background-color: #f4f4f4;
+      background-color: #f4f4f4; /* Header row color */
     }
 
     tbody tr:nth-child(odd) {
@@ -22,7 +23,7 @@
     }
 
     tbody tr:hover {
-      background-color: #dcdcdc; /* Slight highlight on hover */
+      background-color: #dcdcdc; /* Highlight on hover */
     }
   </style>
 <div class="row">
