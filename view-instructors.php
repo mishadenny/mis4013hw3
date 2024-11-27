@@ -20,9 +20,9 @@
         <th>ID</th>
         <th>Name</th>
         <th>Age</th>
-        <th>Edit</th>
-        <th>Delete</th>
-        <th>Shows</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
