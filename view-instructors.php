@@ -1,25 +1,17 @@
   <style>
     table {
       width: 100%;
-      border-collapse: collapse; /* Ensure borders don't create gaps */
+      border-collapse: collapse;
     }
 
     th, td {
       text-align: left;
       padding: 12px;
-      border: 1px solid #ddd; /* Add borders for clarity */
+      border: 1px solid #ddd;
     }
 
     th {
-      background-color: #f4f4f4; /* Header row color */
-    }
-
-    tbody tr:nth-child(odd) {
-      background-color: #f9f9f9; /* Light gray for odd rows */
-    }
-
-    tbody tr:nth-child(even) {
-      background-color: #ffffff; /* White for even rows */
+      background-color: #f4f4f4;
     }
 
     tbody tr:hover {
