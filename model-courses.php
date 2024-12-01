@@ -2,8 +2,7 @@
 function selectCourses() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("select show_id, show_title, genre, link
-from `mis4013-hw3`.show");
+        $stmt = $conn->prepare("SELECT show_id, show_title, genre, link FROM `mis4013-hw3`.show");
         $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
@@ -14,13 +13,12 @@ from `mis4013-hw3`.show");
     }
 }
 
-function InsertShow($sTitle, $sGenre) {
+function InsertShow($sTitle, $sGenre, $sLink) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("INSERT INTO `mis4013-hw3`.`show` (`show_title`, `genre`, `link`) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $sTitle, $sGenre, $sLink);
         $success = $stmt->execute();
-        $result = $stmt->get_result();
         $conn->close();
         return $success;
     } catch (Exception $e) {
@@ -29,13 +27,12 @@ function InsertShow($sTitle, $sGenre) {
     }
 }
 
-function UpdateShow($sTitle, $sGenre, $cid) {
+function UpdateShow($sTitle, $sGenre, $sLink, $cid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("update `mis4013-hw3`.`show` set `show_title`=?, `genre`=?, `link`=? where show_id=?");
-        $stmt->bind_param("sssi", $sTitle, $sGenre, $sLink $cid);
+        $stmt = $conn->prepare("UPDATE `mis4013-hw3`.`show` SET `show_title`=?, `genre`=?, `link`=? WHERE show_id=?");
+        $stmt->bind_param("sssi", $sTitle, $sGenre, $sLink, $cid);
         $success = $stmt->execute();
-        $result = $stmt->get_result();
         $conn->close();
         return $success;
     } catch (Exception $e) {
@@ -47,10 +44,9 @@ function UpdateShow($sTitle, $sGenre, $cid) {
 function deleteShow($cid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("delete from `mis4013-hw3`.`show` where show_id=?");
+        $stmt = $conn->prepare("DELETE FROM `mis4013-hw3`.`show` WHERE show_id=?");
         $stmt->bind_param("i", $cid);
         $success = $stmt->execute();
-        $result = $stmt->get_result();
         $conn->close();
         return $success;
     } catch (Exception $e) {
