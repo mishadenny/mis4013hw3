@@ -24,6 +24,10 @@
             <label for="sGenre" class="form-label">Show Genre</label>
             <input type="text" class="form-control" id="sGenre" name="sGenre">
           </div>
+       <div class="mb-3">
+            <label for="sLink" class="form-label">Show Link</label>
+            <input type="text" class="form-control" id="sLink" name="sLink">
+          </div>
               <input type="hidden" name="actionType" value="Add">
           <button type="submit" class="btn btn-primary">Save</button>
         </form>
