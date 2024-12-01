@@ -13,12 +13,12 @@
   ?>
     <div class="col-md-4">
       <div class="card" style="width: 18rem; margin-bottom: 20px;">
-        <a href="<?php echo $course['link']; ?>" target="_blank">
-          <img src="<?php echo $course['link']; ?>" class="card-img-top" alt="<?php echo $course['show_title']; ?>">
+        <a href="<?php echo htmlspecialchars($course['link']); ?>" target="_blank">
+          <img src="<?php echo htmlspecialchars($course['link']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($course['show_title']); ?>">
         </a>
         <div class="card-body">
-          <h5 class="card-title"><?php echo $course['show_title']; ?></h5>
-          <p class="card-text">Genre: <?php echo $course['genre']; ?></p>
+          <h5 class="card-title"><?php echo htmlspecialchars($course['show_title']); ?></h5>
+          <p class="card-text">Genre: <?php echo htmlspecialchars($course['genre']); ?></p>
           <div class="d-flex justify-content-between">
             <div>
               <?php include "view-shows-editform.php"; ?>
@@ -26,7 +26,7 @@
             <form method="post" action="" style="display:inline;">
               <input type="hidden" name="cid" value="<?php echo $course['show_id']; ?>">
               <input type="hidden" name="actionType" value="Delete">
-              <button type="submit" class="btn-danger btn" onclick="return confirm('Are you sure?');">Delete</button>
+              <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
             </form>
             <form method="post" action="sections-by-course.php" style="display:inline;">
               <input type="hidden" name="cid" value="<?php echo $course['show_id']; ?>">
