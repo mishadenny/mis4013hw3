@@ -14,40 +14,41 @@
         <h1 class="modal-title fs-5" id="editEpisodesModalLabel<?php echo $course['episode_id'];?>">Edit Episode</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <!-- Edit Form -->
-        <form method="post" action="">
-          <div class="mb-3">
-            <label for="iid<?php echo $course['episode_id'];?>" class="form-label">Actor</label>
+  <div class="modal-body">
+    <form method="post" action="">
+        <div class="mb-3">
+            <label for="iid<?php echo $course['episode_id']; ?>" class="form-label">Actor</label>
             <?php
-              $actorList = selectInstructorsForInput();
-              $selectedActor = $course['actor_id'];
-              include "view-actor-input-list.php";
+                $actorList = selectInstructorsForInput();
+                $selectedActor = $course['actor_id'];
+                include "view-actor-input-list.php";
             ?>
-          </div>
-          <div class="mb-3">
-            <label for="cid<?php echo $course['episode_id'];?>" class="form-label">Show</label>
-            <input type="text" class="form-control" id="cid<?php echo $course['episode_id'];?>" name="cid" value="<?php echo $course['show_id'];?>">
-          </div>
-          <div class="mb-3">
-            <label for="titleepisode<?php echo $course['episode_id'];?>" class="form-label">Title Episode</label>
-            <input type="text" class="form-control" id="titleepisode<?php echo $course['episode_id'];?>" name="titleepisode" value="<?php echo $course['title_episode'];?>">
-          </div>
-          <div class="mb-3">
-            <label for="seasonnumber<?php echo $course['episode_id'];?>" class="form-label">Season Number</label>
-            <input type="text" class="form-control" id="seasonnumber<?php echo $course['episode_id'];?>" name="seasonnumber" value="<?php echo $course['season_number'];?>">
-          </div>
-          <div class="mb-3">
-            <label for="episodenumber<?php echo $course['episode_id'];?>" class="form-label">Episode Number</label>
-            <input type="text" class="form-control" id="episodenumber<?php echo $course['episode_id'];?>" name="episodenumber" value="<?php echo $course['episode_number'];?>">
-          </div>
-          <!-- Hidden fields for episode ID (sid) and actionType -->
-          <input type="hidden" name="sid" value="<?php echo $course['episode_id']; ?>">
-          <input type="hidden" name="actionType" value="Edit">
-          <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-        <!-- End of Edit Form -->
-      </div>
+        </div>
+        <div class="mb-3">
+            <label for="cid<?php echo $course['episode_id']; ?>" class="form-label">Show</label>
+            <?php
+                $showList = selectCoursesForInput();
+                $selectedShow = $course['show_id'];
+                include "view-show-input-list.php";
+            ?>
+        </div>
+        <div class="mb-3">
+            <label for="titleepisode<?php echo $course['episode_id']; ?>" class="form-label">Title Episode</label>
+            <input type="text" class="form-control" id="titleepisode<?php echo $course['episode_id']; ?>" name="titleepisode" value="<?php echo htmlspecialchars($course['title_episode']); ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="seasonnumber<?php echo $course['episode_id']; ?>" class="form-label">Season Number</label>
+            <input type="text" class="form-control" id="seasonnumber<?php echo $course['episode_id']; ?>" name="seasonnumber" value="<?php echo htmlspecialchars($course['season_number']); ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="episodenumber<?php echo $course['episode_id']; ?>" class="form-label">Episode Number</label>
+            <input type="text" class="form-control" id="episodenumber<?php echo $course['episode_id']; ?>" name="episodenumber" value="<?php echo htmlspecialchars($course['episode_number']); ?>" required>
+        </div>
+        <input type="hidden" name="sid" value="<?php echo $course['episode_id']; ?>">
+        <input type="hidden" name="actionType" value="Edit">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+        </div>
     </div>
   </div>
 </div>
