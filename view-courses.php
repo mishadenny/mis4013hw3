@@ -24,11 +24,11 @@
             <form method="post" action="" style="display:inline;">
               <input type="hidden" name="cid" value="<?php echo $course['show_id']; ?>">
               <input type="hidden" name="actionType" value="Delete">
-              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>
+              <button type="submit" class="btn-danger btn" onclick="return confirm('Are you sure?');">Delete</button>
             </form>
             <form method="post" action="sections-by-course.php" style="display:inline;">
               <input type="hidden" name="cid" value="<?php echo $course['show_id']; ?>">
-              <button type="submit" class="btn btn-primary btn-sm">Episodes</button>
+              <button type="submit" class="btn btn-info">Episodes</button>
             </form>
           </div>
         </div>
