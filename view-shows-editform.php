@@ -24,6 +24,10 @@
             <label for="sGenre<?php echo $course['show_id'];?>" class="form-label">Show Genre</label>
             <input type="text" class="form-control" id="sGenre<?php echo $course['show_id'];?>" name="sGenre" value="<?php echo $course['genre'];?>">
           </div>
+          <div class="mb-3">
+            <label for="sLink<?php echo $course['show_id'];?>" class="form-label">Show Link</label>
+            <input type="text" class="form-control" id="sLink<?php echo $course['show_id'];?>" name="sLink" value="<?php echo $course['link'];?>">
+          </div>
               <input type="hidden" name="cid" value="<?php echo $course['show_id'];?>">
               <input type="hidden" name="actionType" value="Edit">
           <button type="submit" class="btn btn-primary">Save</button>
