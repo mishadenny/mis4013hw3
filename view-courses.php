@@ -3,55 +3,39 @@
     <h1>Shows</h1>
   </div>
   <div class="col-auto">
-  <?php
-  include "view-shows-newform.php"
-  ?>
+    <?php include "view-shows-newform.php"; ?>
   </div>
 </div>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Genre</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      </tr>
-    </thead>
-    <tbody>
+
+<div class="row">
   <?php 
-    while ($course=$courses->fetch_assoc()) {
-      ?>
-      <tr>
-        <td><?php echo $course['show_id']; ?></td>
-        <td><?php echo $course['show_title'];?></td>
-        <td><?php echo $course['genre'];?></td>
-        <td>
-      <?php
-      include "view-shows-editform.php"
-      ?>
-        </td>
-        <td>
-          <form method="post" action="">
-            <input type="hidden" name="cid" value="<?php echo $course['show_id']; ?>">
-            <input type="hidden" name="actionType" value="Delete">
-            <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
-              Delete
-            </button>
-          </form>
-        </td>
-          <td>
-            <form method="post" action="sections-by-course.php">
-            <input type="hidden" name="cid" value="<?php echo $course['show_id']; ?>">
-            <button type="submit" class="btn btn-primary">Sections</button>
-            </form>
-        </td>
-      </tr>
-      <?php
-    }
+  while ($course = $courses->fetch_assoc()) {
   ?>
-    </tbody>
-  </table>
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem; margin-bottom: 20px;">
+        <!-- Optional image section -->
+        <img src="path/to/image/<?php echo $course['show_id']; ?>.jpg" class="card-img-top" alt="Show Image">
+        <div class="card-body">
+          <h5 class="card-title"><?php echo $course['show_title']; ?></h5>
+          <p class="card-text">Genre: <?php echo $course['genre']; ?></p>
+          <div class="d-flex justify-content-between">
+            <div>
+              <?php include "view-shows-editform.php"; ?>
+            </div>
+            <form method="post" action="" style="display:inline;">
+              <input type="hidden" name="cid" value="<?php echo $course['show_id']; ?>">
+              <input type="hidden" name="actionType" value="Delete">
+              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>
+            </form>
+            <form method="post" action="sections-by-course.php" style="display:inline;">
+              <input type="hidden" name="cid" value="<?php echo $course['show_id']; ?>">
+              <button type="submit" class="btn btn-primary btn-sm">Sections</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+  ?>
 </div>
