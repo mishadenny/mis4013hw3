@@ -17,8 +17,8 @@ from `mis4013-hw3`.show");
 function InsertShow($sTitle, $sGenre) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO `mis4013-hw3`.`show` (`show_title`, `genre`) VALUES (?, ?)");
-        $stmt->bind_param("ss", $sTitle, $sGenre);
+        $stmt = $conn->prepare("INSERT INTO `mis4013-hw3`.`show` (`show_title`, `genre`, `link`) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $sTitle, $sGenre, $sLink);
         $success = $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
@@ -32,8 +32,8 @@ function InsertShow($sTitle, $sGenre) {
 function UpdateShow($sTitle, $sGenre, $cid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("update `mis4013-hw3`.`show` set `show_title`=?, `genre`=? where show_id=?");
-        $stmt->bind_param("ssi", $sTitle, $sGenre, $cid);
+        $stmt = $conn->prepare("update `mis4013-hw3`.`show` set `show_title`=?, `genre`=?, `link`=? where show_id=?");
+        $stmt->bind_param("sssi", $sTitle, $sGenre, $sLink $cid);
         $success = $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
