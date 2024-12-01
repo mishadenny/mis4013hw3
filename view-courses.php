@@ -13,7 +13,9 @@
   ?>
     <div class="col-md-4">
       <div class="card" style="width: 18rem; margin-bottom: 20px;">
-        <img src="path/to/image/<?php echo $course['show_id']; ?>.jpg" class="card-img-top" alt="Show Image">
+        <a href="<?php echo $course['link']; ?>" target="_blank">
+          <img src="<?php echo $course['link']; ?>" class="card-img-top" alt="<?php echo $course['show_title']; ?>">
+        </a>
         <div class="card-body">
           <h5 class="card-title"><?php echo $course['show_title']; ?></h5>
           <p class="card-text">Genre: <?php echo $course['genre']; ?></p>
