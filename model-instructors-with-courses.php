@@ -50,7 +50,11 @@ function selectInstructorsForInput() {
 function selectCoursesForInput() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT show_id, show_title FROM `mis4013-hw3`.show ORDER BY show_title");
+        $stmt = $conn->prepare("
+            SELECT show_id, CONCAT(show_id, ' - ', show_title) AS show_name
+            FROM `mis4013-hw3`.show
+            ORDER BY show_title
+        ");
         $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
@@ -60,6 +64,7 @@ function selectCoursesForInput() {
         throw $e;
     }
 }
+
 
 function insertEpisode($iid, $cid, $titleepisode, $seasonnumber, $episodenumber) {
     try {
