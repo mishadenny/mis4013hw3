@@ -37,7 +37,7 @@
           <form method="post" action="">
             <input type="hidden" name="cid" value="<?php echo $platform['platform_id']; ?>">
             <input type="hidden" name="actionType" value="Delete">
-            <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">
                 Delete
             </button>
           </form>
