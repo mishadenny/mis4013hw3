@@ -45,7 +45,7 @@
           <td>
           <form method="post" action="shows-by-platform.php">
             <input type="hidden" name="cid" value="<?php echo $platform['platform_id']; ?>">
-            <button type="submit" class="btn btn-primary">Shows</button>
+            <button type="submit" class="btn btn-info">Shows</button>
           </form>
         </td>
       </tr>
