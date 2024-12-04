@@ -17,7 +17,7 @@ function selectCourses() {
 function InsertShow($sTitle, $sGenre, $sLink) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO mis4013-hw3.show (show_title, genre, link) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO `mis4013-hw3`.show (show_title, genre, link) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $sTitle, $sGenre, $sLink);
         $success = $stmt->execute();
         $conn->close();
@@ -31,7 +31,7 @@ function InsertShow($sTitle, $sGenre, $sLink) {
 function UpdateShow($sTitle, $sGenre, $sLink, $cid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("UPDATE mis4013-hw3.show SET show_title=?, genre=?, link=? WHERE show_id=?");
+        $stmt = $conn->prepare("UPDATE `mis4013-hw3`.show SET show_title=?, genre=?, link=? WHERE show_id=?");
         $stmt->bind_param("sssi", $sTitle, $sGenre, $sLink, $cid);
         $success = $stmt->execute();
         $conn->close();
@@ -45,7 +45,7 @@ function UpdateShow($sTitle, $sGenre, $sLink, $cid) {
 function deleteShow($cid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("DELETE FROM mis4013-hw3.show WHERE show_id=?");
+        $stmt = $conn->prepare("DELETE FROM `mis4013-hw3`.show WHERE show_id=?");
         $stmt->bind_param("i", $cid);
         $success = $stmt->execute();
         $conn->close();
