@@ -2,7 +2,7 @@
 function selectCourses() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT show_id, show_title, genre, link FROM `mis4013-hw3`.`show`");
+        $stmt = $conn->prepare("SELECT show_id, show_title, genre, link FROM mis4013-hw3.show");
         $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
@@ -13,11 +13,11 @@ function selectCourses() {
     }
 }
 
-function InsertShow($sTitle, $sGenre, $sLink, $platformID) {
+function InsertShow($sTitle, $sGenre, $sLink) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO mis4013-hw3.show (show_title, genre, link, platform_id) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sssi", $sTitle, $sGenre, $sLink, $platformID);
+        $stmt = $conn->prepare("INSERT INTO mis4013-hw3.show (show_title, genre, link) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $sTitle, $sGenre, $sLink);
         $success = $stmt->execute();
         $conn->close();
         return $success;
@@ -27,11 +27,11 @@ function InsertShow($sTitle, $sGenre, $sLink, $platformID) {
     }
 }
 
-function UpdateShow($sTitle, $sGenre, $sLink, $platformID, $cid) {
+function UpdateShow($sTitle, $sGenre, $sLink, $cid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("UPDATE mis4013-hw3.show SET show_title=?, genre=?, link=?, platform_id=? WHERE show_id=?");
-        $stmt->bind_param("sssii", $sTitle, $sGenre, $sLink, $platformID, $cid);
+        $stmt = $conn->prepare("UPDATE mis4013-hw3.show SET show_title=?, genre=?, link=? WHERE show_id=?");
+        $stmt->bind_param("sssi", $sTitle, $sGenre, $sLink, $cid);
         $success = $stmt->execute();
         $conn->close();
         return $success;
@@ -54,19 +54,4 @@ function deleteShow($cid) {
         throw $e;
     }
 }
-
-function selectPlatformsForInput() {
-    try {
-        $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT platform_id, platform_name FROM `mis4013-hw3`.platform ORDER BY platform_name");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $conn->close();
-        return $result;
-    } catch (Exception $e) {
-        $conn->close();
-        throw $e;
-    }
-}
-
 ?>
