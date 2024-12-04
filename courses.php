@@ -8,7 +8,7 @@ include "view-header.php";
 if (isset($_POST['actionType'])) {
     switch ($_POST['actionType']) {
         case "Add":
-            if (InsertShow($_POST['sTitle'], $_POST['sGenre'], $_POST['sLink'])) {
+            if (InsertShow($_POST['sTitle'], $_POST['sGenre'], $_POST['sLink'], $_POST['platformID'])) {
                 echo '<div class="alert alert-success" role="alert">Show Added</div>';
             } else {
                 echo '<div class="alert alert-danger" role="alert">Error Adding Show</div>';
@@ -16,7 +16,7 @@ if (isset($_POST['actionType'])) {
             break;
 
         case "Edit":
-            if (UpdateShow($_POST['sTitle'], $_POST['sGenre'], $_POST['sLink'], $_POST['cid'])) {
+            if (UpdateShow($_POST['sTitle'], $_POST['sGenre'], $_POST['sLink'], $_POST['platformID'], $_POST['cid'])) {
                 echo '<div class="alert alert-success" role="alert">Show Updated</div>';
             } else {
                 echo '<div class="alert alert-danger" role="alert">Error Updating Show</div>';
@@ -34,6 +34,7 @@ if (isset($_POST['actionType'])) {
 }
 
 $courses = selectCourses();
+$platformList = selectPlatformsForInput(); // Fetch platform list for dropdowns
 include "view-courses.php";
 include "view-footer.php";
 ?>
