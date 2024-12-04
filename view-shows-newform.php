@@ -20,6 +20,10 @@
             <label for="sTitle" class="form-label">Show Title</label>
             <input type="text" class="form-control" id="sTitle" name="sTitle">
           </div>
+      <div class="mb-3">
+          <label for="platform_id" class="form-label">Platform</label>
+          <?php include "view-platform-input-list.php"; ?>
+        </div>
           <div class="mb-3">
             <label for="sGenre" class="form-label">Show Genre</label>
             <input type="text" class="form-control" id="sGenre" name="sGenre">
