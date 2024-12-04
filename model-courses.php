@@ -2,7 +2,7 @@
 function selectCourses() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT show_id, show_title, genre, link FROM `mis4013-hw3`.show");
+        $stmt = $conn->prepare("SELECT show_id, show_title, genre, link FROM mis4013-hw3.show");
         $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
@@ -13,11 +13,11 @@ function selectCourses() {
     }
 }
 
-function InsertShow($sTitle, $sGenre, $sLink, $platformId) {
+function InsertShow($sTitle, $sGenre, $sLink, $platformID) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO `mis4013-hw3`.`show` (`show_title`, `genre`, `link`, `platform_id`) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sssi", $sTitle, $sGenre, $sLink, $platformId);
+        $stmt = $conn->prepare("INSERT INTO mis4013-hw3.show (show_title, genre, link, platform_id) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sssi", $sTitle, $sGenre, $sLink, $platformID);
         $success = $stmt->execute();
         $conn->close();
         return $success;
@@ -27,12 +27,11 @@ function InsertShow($sTitle, $sGenre, $sLink, $platformId) {
     }
 }
 
-
-function UpdateShow($sTitle, $sGenre, $sLink, $platformId, $cid) {
+function UpdateShow($sTitle, $sGenre, $sLink, $platformID, $cid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("UPDATE `mis4013-hw3`.`show` SET `show_title`=?, `genre`=?, `link`=?, `platform_id`=? WHERE show_id=?");
-        $stmt->bind_param("sssii", $sTitle, $sGenre, $sLink, $platformId, $cid);
+        $stmt = $conn->prepare("UPDATE mis4013-hw3.show SET show_title=?, genre=?, link=?, platform_id=? WHERE show_id=?");
+        $stmt->bind_param("sssii", $sTitle, $sGenre, $sLink, $platformID, $cid);
         $success = $stmt->execute();
         $conn->close();
         return $success;
@@ -41,12 +40,11 @@ function UpdateShow($sTitle, $sGenre, $sLink, $platformId, $cid) {
         throw $e;
     }
 }
-
 
 function deleteShow($cid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("DELETE FROM `mis4013-hw3`.`show` WHERE show_id=?");
+        $stmt = $conn->prepare("DELETE FROM mis4013-hw3.show WHERE show_id=?");
         $stmt->bind_param("i", $cid);
         $success = $stmt->execute();
         $conn->close();
