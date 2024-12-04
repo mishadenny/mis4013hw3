@@ -20,14 +20,7 @@
             <label for="sTitle<?php echo $course['show_id']; ?>" class="form-label">Show Title</label>
             <input type="text" class="form-control" id="sTitle<?php echo $course['show_id']; ?>" name="sTitle" value="<?php echo htmlspecialchars($course['show_title']); ?>">
           </div>
-          <div class="mb-3">
-            <label for="platformid<?php echo $course['show_id']; ?>" class="form-label">Platform</label>
-            <?php
-                $showList = selectCoursesForInput();
-                $selectedShow = $course['show_id'];
-                include "view-show-input-list.php";
-            ?>
-        </div>
+
           <div class="mb-3">
             <label for="sGenre<?php echo $course['show_id']; ?>" class="form-label">Show Genre</label>
             <input type="text" class="form-control" id="sGenre<?php echo $course['show_id']; ?>" name="sGenre" value="<?php echo htmlspecialchars($course['genre']); ?>">
