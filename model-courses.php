@@ -54,4 +54,19 @@ function deleteShow($cid) {
         throw $e;
     }
 }
+
+function selectPlatformsForInput() {
+    try {
+        $conn = get_db_connection();
+        $stmt = $conn->prepare("SELECT platform_id, platform_name FROM `mis4013-hw3`.platform ORDER BY platform_name");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $conn->close();
+        return $result;
+    } catch (Exception $e) {
+        $conn->close();
+        throw $e;
+    }
+}
+
 ?>
