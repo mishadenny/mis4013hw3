@@ -34,7 +34,7 @@
           </div>
       <div class="mb-3">
           <label for="sImage" class="form-label">Show Image</label>
-          <input type="file" class="form-control" id="sImage" name="sImage" accept="image/*">
+          <input type="text" class="form-control" id="sImage" name="sImage" accept="image/*">
         </div>
               <input type="hidden" name="actionType" value="Add">
           <button type="submit" class="btn btn-primary">Save</button>
