@@ -27,9 +27,10 @@
 <!-- Sorting Buttons -->
 <div class="row mb-4">
   <div class="col">
+    <button onclick="sortCards('id')" class="btn btn-beige">ID</button>
     <button onclick="sortCards('title')" class="btn btn-beige">Title</button>
     <button onclick="sortCards('genre')" class="btn btn-beige">Genre</button>
-    <button onclick="sortCards('id')" class="btn btn-beige">ID</button>
+    
   </div>
 </div>
 
