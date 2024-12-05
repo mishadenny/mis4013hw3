@@ -13,9 +13,11 @@
   ?>
     <div class="col-md-4">
       <div class="card" style="width: 18rem; margin-bottom: 20px;">
-        <a href="<?php echo htmlspecialchars($course['link']); ?>" target="_blank">
-          <img src="<?php echo htmlspecialchars($course['link']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($course['show_title']); ?>">
-        </a>
+        <!-- Updated Image Logic -->
+        <img src="<?php echo htmlspecialchars($course['image_path'] ?: 'default-image.jpg'); ?>" 
+             class="card-img-top" 
+             alt="<?php echo htmlspecialchars($course['show_title']); ?>">
+
         <div class="card-body">
           <h5 class="card-title"><?php echo htmlspecialchars($course['show_title']); ?></h5>
           <p class="card-text">Genre: <?php echo htmlspecialchars($course['genre']); ?></p>
