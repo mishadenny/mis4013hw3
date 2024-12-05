@@ -6,9 +6,22 @@ $pageTitle = "Shows";
 include "view-header.php";
 
 if (isset($_POST['actionType'])) {
+    $imagePath = null;
+
+    // Handle image upload if provided
+    if (isset($_FILES['sImage']) && $_FILES['sImage']['error'] == 0) {
+        $targetDir = "uploads/";
+        $targetFile = $targetDir . basename($_FILES["sImage"]["name"]);
+        if (move_uploaded_file($_FILES["sImage"]["tmp_name"], $targetFile)) {
+            $imagePath = $targetFile;
+        } else {
+            echo '<div class="alert alert-danger" role="alert">Error Uploading Image</div>';
+        }
+    }
+
     switch ($_POST['actionType']) {
         case "Add":
-            if (InsertShow($_POST['sTitle'], $_POST['sGenre'], $_POST['sLink'], $_POST['platformID'])) {
+            if (InsertShow($_POST['sTitle'], $_POST['sGenre'], $_POST['sLink'], $_POST['platformID'], $imagePath)) {
                 echo '<div class="alert alert-success" role="alert">Show Added</div>';
             } else {
                 echo '<div class="alert alert-danger" role="alert">Error Adding Show</div>';
@@ -16,7 +29,7 @@ if (isset($_POST['actionType'])) {
             break;
 
         case "Edit":
-            if (UpdateShow($_POST['sTitle'], $_POST['sGenre'], $_POST['sLink'], $_POST['platformID'], $_POST['cid'])) {
+            if (UpdateShow($_POST['sTitle'], $_POST['sGenre'], $_POST['sLink'], $_POST['platformID'], $imagePath, $_POST['cid'])) {
                 echo '<div class="alert alert-success" role="alert">Show Updated</div>';
             } else {
                 echo '<div class="alert alert-danger" role="alert">Error Updating Show</div>';
