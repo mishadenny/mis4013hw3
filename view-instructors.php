@@ -3,7 +3,11 @@
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-
+    .btn-beige {
+      background-color: #f5f5dc; /* Beige color */
+      color: #000; /* Black text */
+      border: 1px solid #ddd; /* Subtle border */
+    }
     .btn-beige:hover {
       background-color: #e6e6cc; /* Slightly darker beige on hover */
     }
