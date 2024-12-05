@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <?php 
-      while ($platform = $platforms->fetch_assoc()) {
+      while ($platform = $platformWithCounts->fetch_assoc()) { // Changed variable name
       ?>
         <tr>
           <td><?php echo $platform['platform_id']; ?></td>
