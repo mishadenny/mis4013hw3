@@ -29,6 +29,11 @@
             <label for="sLink<?php echo $course['show_id']; ?>" class="form-label">Show Link</label>
             <input type="text" class="form-control" id="sLink<?php echo $course['show_id']; ?>" name="sLink" value="<?php echo htmlspecialchars($course['link']); ?>">
           </div>
+          <div class="mb-3">
+                <label for="sImage<?php echo $course['show_id']; ?>" class="form-label">Show Image</label>
+              <input type="text" class="form-control" id="sImage<?php echo $course['show_id']; ?>" name="sImage" accept="image/*">
+          </div>
+
           <input type="hidden" name="cid" value="<?php echo $course['show_id']; ?>">
           <input type="hidden" name="actionType" value="Edit">
           <button type="submit" class="btn btn-primary">Save</button>
