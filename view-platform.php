@@ -1,12 +1,3 @@
-<div class="row">
-  <div class="col">
-    <h1>Platforms</h1>
-  </div>
-  <div class="col-auto">
-    <?php include "view-platform-newform.php"; ?>
-  </div>
-</div>
-
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -14,7 +5,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Headquarters</th>
-        <th>Show Count</th>
+        <th>Show Count</th> <!-- Added Show Count column -->
         <th></th>
         <th></th>
         <th></th>
@@ -28,7 +19,7 @@
           <td><?php echo $platform['platform_id']; ?></td>
           <td><?php echo $platform['platform_name']; ?></td>
           <td><?php echo $platform['headquarters']; ?></td>
-          <td><?php echo $platform['show_count']; ?></td>
+          <td><?php echo $platform['show_count']; ?></td> <!-- Display Show Count -->
           <td>
             <?php include "view-platform-editform.php"; ?>
           </td>
@@ -54,44 +45,3 @@
     </tbody>
   </table>
 </div>
-
-<!-- Donut Chart -->
-<div class="row mt-5">
-  <div class="col">
-    <h2>Platform Distribution by Show Count</h2>
-    <canvas id="platformChart" style="width:100%;max-width:600px;"></canvas>
-  </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<script>
-<?php
-// Prepare data for the chart
-$chartData = [];
-$platforms->data_seek(0); // Reset the pointer to fetch data again
-while ($platform = $platforms->fetch_assoc()) {
-    $chartData['labels'][] = $platform['platform_name'];
-    $chartData['data'][] = (int)$platform['show_count']; // Cast to integer
-}
-?>
-const platformLabels = <?php echo json_encode($chartData['labels']); ?>;
-const platformData = <?php echo json_encode($chartData['data']); ?>;
-const platformColors = platformLabels.map((_, i) => `hsl(${(i * 50) % 360}, 70%, 50%)`);
-
-new Chart(document.getElementById("platformChart"), {
-  type: "doughnut",
-  data: {
-    labels: platformLabels,
-    datasets: [{
-      backgroundColor: platformColors,
-      data: platformData
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: "Platform Distribution by Show Count"
-    }
-  }
-});
-</script>
