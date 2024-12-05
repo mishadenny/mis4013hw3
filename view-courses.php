@@ -24,16 +24,12 @@
   </div>
 </div>
 
-<!-- Filters -->
+<!-- Sorting Buttons -->
 <div class="row mb-4">
-  <div class="col-md-4">
-    <input id="filterTitle" type="text" class="form-control" placeholder="Filter by Title" onkeyup="filterCards()">
-  </div>
-  <div class="col-md-4">
-    <input id="filterGenre" type="text" class="form-control" placeholder="Filter by Genre" onkeyup="filterCards()">
-  </div>
-  <div class="col-md-4">
-    <input id="filterID" type="number" class="form-control" placeholder="Filter by ID" onkeyup="filterCards()">
+  <div class="col">
+    <button onclick="sortCards('title')" class="btn btn-beige">Sort by Title</button>
+    <button onclick="sortCards('genre')" class="btn btn-beige">Sort by Genre</button>
+    <button onclick="sortCards('id')" class="btn btn-beige">Sort by ID</button>
   </div>
 </div>
 
@@ -77,29 +73,25 @@
 </div>
 
 <script>
-function filterCards() {
-  const titleFilter = document.getElementById('filterTitle').value.toLowerCase();
-  const genreFilter = document.getElementById('filterGenre').value.toLowerCase();
-  const idFilter = document.getElementById('filterID').value;
+function sortCards(criteria) {
+  const container = document.getElementById('showsContainer');
+  const cards = Array.from(container.getElementsByClassName('show-card'));
 
-  const cards = document.querySelectorAll('.show-card');
-  
-  cards.forEach(card => {
-    const title = card.dataset.title.toLowerCase();
-    const genre = card.dataset.genre.toLowerCase();
-    const id = card.dataset.id;
+  cards.sort((a, b) => {
+    const valueA = a.dataset[criteria].toLowerCase();
+    const valueB = b.dataset[criteria].toLowerCase();
 
-    // Check if card matches filters
-    const matchesTitle = title.includes(titleFilter);
-    const matchesGenre = genre.includes(genreFilter);
-    const matchesID = !idFilter || id === idFilter;
-
-    if (matchesTitle && matchesGenre && matchesID) {
-      card.style.display = ''; // Show the card
+    if (criteria === 'id') {
+      // Sort numerically for ID
+      return parseInt(valueA) - parseInt(valueB);
     } else {
-      card.style.display = 'none'; // Hide the card
+      // Sort alphabetically for Title and Genre
+      return valueA.localeCompare(valueB);
     }
   });
+
+  // Reattach sorted cards to the container
+  cards.forEach(card => container.appendChild(card));
 }
 </script>
 
