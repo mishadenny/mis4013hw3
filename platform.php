@@ -31,6 +31,7 @@ if (isset($_POST['actionType'])) {
       break;
   }
 }
+$platforms = selectPlatformWithShowCount();
 $platforms = selectPlatform();
 include "view-platform.php";
 include "view-footer.php";
