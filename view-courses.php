@@ -8,13 +8,22 @@
 </div>
 
 <div class="row">
+  <div class="col">
+    <h1>Shows</h1>
+  </div>
+  <div class="col-auto">
+    <?php include "view-shows-newform.php"; ?>
+  </div>
+</div>
+
+<div class="row">
   <?php 
   while ($course = $courses->fetch_assoc()) {
   ?>
     <div class="col-md-4">
       <div class="card" style="width: 18rem; margin-bottom: 20px;">
-        <!-- Updated Image Logic -->
-        <img src="<?php echo htmlspecialchars($course['image_path'] ?: 'default-image.jpg'); ?>" 
+        <!-- Display Image from the Database -->
+        <img src="<?php echo htmlspecialchars($course['image'] ?: 'default-image.jpg'); ?>" 
              class="card-img-top" 
              alt="<?php echo htmlspecialchars($course['show_title']); ?>">
 
@@ -42,3 +51,4 @@
   }
   ?>
 </div>
+
