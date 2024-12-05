@@ -28,7 +28,7 @@ function InsertShow($sTitle, $sGenre, $sLink, $platformId, $simage) {
 }
 
 
-function UpdateShow($sTitle, $sGenre, $sLink, $platformId,, $simage $cid) {
+function UpdateShow($sTitle, $sGenre, $sLink, $platformId, $simage, $cid) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("UPDATE `mis4013-hw3`.`show` SET `show_title`=?, `genre`=?, `link`=?, `platform_id`=?, `image`=? WHERE show_id=?");
