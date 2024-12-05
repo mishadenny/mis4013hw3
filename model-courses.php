@@ -32,7 +32,7 @@ function UpdateShow($sTitle, $sGenre, $sLink, $platformId, $simage, $cid) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("UPDATE `mis4013-hw3`.`show` SET `show_title`=?, `genre`=?, `link`=?, `platform_id`=?, `image`=? WHERE show_id=?");
-        $stmt->bind_param("sssisi", $sTitle, $sGenre, $sLink, $platformId, $simage $cid);
+        $stmt->bind_param("sssisi", $sTitle, $sGenre, $sLink, $platformId, $simage, $cid);
         $success = $stmt->execute();
         $conn->close();
         return $success;
