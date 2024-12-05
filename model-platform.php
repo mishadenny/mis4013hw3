@@ -63,9 +63,14 @@ function selectPlatformWithShowCount() {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("
-            SELECT p.platform_id, p.platform_name, p.headquarters, COUNT(s.show_id) AS show_count
+            SELECT 
+                p.platform_id, 
+                p.platform_name, 
+                p.headquarters, 
+                COUNT(s.show_id) AS show_count
             FROM `mis4013-hw3`.platform p
-            LEFT JOIN `mis4013-hw3`.show s ON p.platform_id = s.platform_id
+            LEFT JOIN `mis4013-hw3`.show s 
+                ON p.platform_id = s.platform_id
             GROUP BY p.platform_id, p.platform_name, p.headquarters
         ");
         $stmt->execute();
@@ -77,5 +82,6 @@ function selectPlatformWithShowCount() {
         throw $e;
     }
 }
+
 
 ?>
