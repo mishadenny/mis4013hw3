@@ -27,9 +27,9 @@
 <!-- Sorting Buttons -->
 <div class="row mb-4">
   <div class="col">
-    <button onclick="sortCards('title')" class="btn btn-beige">Sort by Title</button>
-    <button onclick="sortCards('genre')" class="btn btn-beige">Sort by Genre</button>
-    <button onclick="sortCards('id')" class="btn btn-beige">Sort by ID</button>
+    <button onclick="sortCards('title')" class="btn btn-beige">Title</button>
+    <button onclick="sortCards('genre')" class="btn btn-beige">Genre</button>
+    <button onclick="sortCards('id')" class="btn btn-beige">ID</button>
   </div>
 </div>
 
@@ -49,7 +49,6 @@
         <div class="card-body">
           <h5 class="card-title"><?php echo htmlspecialchars($course['show_title']); ?></h5>
           <p class="card-text">Genre: <?php echo htmlspecialchars($course['genre']); ?></p>
-          <p class="card-text">ID: <?php echo htmlspecialchars($course['show_id']); ?></p>
           <div class="d-flex justify-content-between">
             <div>
               <?php include "view-shows-editform.php"; ?>
