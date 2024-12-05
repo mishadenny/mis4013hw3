@@ -32,6 +32,10 @@
             <label for="sLink" class="form-label">Show Link</label>
             <input type="text" class="form-control" id="sLink" name="sLink">
           </div>
+      <div class="mb-3">
+          <label for="sImage" class="form-label">Show Image</label>
+          <input type="file" class="form-control" id="sImage" name="sImage" accept="image/*">
+        </div>
               <input type="hidden" name="actionType" value="Add">
           <button type="submit" class="btn btn-primary">Save</button>
         </form>
