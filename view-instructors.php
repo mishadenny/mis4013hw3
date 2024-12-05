@@ -2,6 +2,26 @@
 <html>
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    /* Beige styling for table rows */
+    #actorsTable tbody tr:nth-child(odd) {
+      background-color: #f5f5dc; /* Beige color */
+    }
+    #actorsTable tbody tr:nth-child(even) {
+      background-color: #ffffff; /* White for alternating rows */
+    }
+
+    /* Beige styling for filter buttons */
+    .btn-beige {
+      background-color: #f5f5dc; /* Beige color */
+      color: #000; /* Black text */
+      border: 1px solid #ddd; /* Subtle border */
+    }
+
+    .btn-beige:hover {
+      background-color: #e6e6cc; /* Slightly darker beige on hover */
+    }
+  </style>
 </head>
 <body>
 
@@ -15,13 +35,13 @@
 </div>
 
 <p>
-  <button onclick="sortTable(0)" class="btn btn-secondary">ID</button>
-  <button onclick="sortTable(1)" class="btn btn-secondary">Name</button>
-  <button onclick="sortTable(2)" class="btn btn-secondary">Age</button>
+  <button onclick="sortTable(0)" class="btn btn-beige">ID</button>
+  <button onclick="sortTable(1)" class="btn btn-beige">Name</button>
+  <button onclick="sortTable(2)" class="btn btn-beige">Age</button>
 </p>
 
 <div class="table-responsive">
-  <table id="actorsTable" class="table table-striped">
+  <table id="actorsTable" class="table">
     <thead>
       <tr>
         <th>ID</th>
