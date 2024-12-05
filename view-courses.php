@@ -8,15 +8,6 @@
 </div>
 
 <div class="row">
-  <div class="col">
-    <h1>Shows</h1>
-  </div>
-  <div class="col-auto">
-    <?php include "view-shows-newform.php"; ?>
-  </div>
-</div>
-
-<div class="row">
   <?php 
   while ($course = $courses->fetch_assoc()) {
   ?>
