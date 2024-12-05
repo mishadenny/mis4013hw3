@@ -12,7 +12,7 @@
   while ($course = $courses->fetch_assoc()) {
   ?>
     <div class="col-md-4">
-      <div class="card" style="width: 18rem; margin-bottom: 20px;">
+      <div class="card" style="width: 18rem; margin-bottom: 20px; background-color: #f5f5dc;">
         <!-- Display Image from the Database -->
         <img src="<?php echo htmlspecialchars($course['image'] ?: 'default-image.jpg'); ?>" 
              class="card-img-top" 
@@ -42,4 +42,3 @@
   }
   ?>
 </div>
-
