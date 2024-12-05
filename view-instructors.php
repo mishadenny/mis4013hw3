@@ -3,20 +3,6 @@
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-    /* Beige styling for table rows */
-    #actorsTable tbody tr:nth-child(odd) {
-      background-color: #f5f5dc; /* Beige color */
-    }
-    #actorsTable tbody tr:nth-child(even) {
-      background-color: #ffffff; /* White for alternating rows */
-    }
-
-    /* Beige styling for filter buttons */
-    .btn-beige {
-      background-color: #f5f5dc; /* Beige color */
-      color: #000; /* Black text */
-      border: 1px solid #ddd; /* Subtle border */
-    }
 
     .btn-beige:hover {
       background-color: #e6e6cc; /* Slightly darker beige on hover */
