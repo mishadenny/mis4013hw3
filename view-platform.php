@@ -66,32 +66,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script>
 <?php
-// Prepare data for the chart
 $chartData = [];
-$platforms->data_seek(0); // Reset the pointer to fetch data again
+$platforms->data_seek(0); // Reset the pointer
 while ($platform = $platforms->fetch_assoc()) {
     $chartData['labels'][] = $platform['platform_name'];
-    $chartData['data'][] = (int)$platform['show_count']; // Cast to integer
+    $chartData['data'][] = (int)$platform['show_count'];
 }
 ?>
 const platformLabels = <?php echo json_encode($chartData['labels']); ?>;
 const platformData = <?php echo json_encode($chartData['data']); ?>;
 const platformColors = platformLabels.map((_, i) => `hsl(${(i * 50) % 360}, 70%, 50%)`);
 
-new Chart("platformChart", {
-  type: "doughnut",
-  data: {
-    labels: platformLabels,
-    datasets: [{
-      backgroundColor: platformColors,
-      data: platformData
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: "Platform Distribution by Show Count"
-    }
-  }
-});
+const canvas = document.getElementById("platformChart");
+if (!canvas) {
+    console.error("Canvas element not found.");
+} else {
+    new Chart(canvas, {
+        type: "doughnut",
+        data: {
+            labels: platformLabels,
+            datasets: [{
+                backgroundColor: platformColors,
+                data: platformData
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Platform Distribution by Show Count"
+            }
+        }
+    });
+}
 </script>
