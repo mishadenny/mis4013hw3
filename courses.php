@@ -47,7 +47,7 @@ if (isset($_POST['actionType'])) {
 }
 
 $courses = selectCourses();
-$platformList = selectPlatformsForInput(); // Fetch platform list for dropdowns
+$platformWithCounts = selectPlatformWithShowCount();
 include "view-courses.php";
 include "view-footer.php";
 ?>
