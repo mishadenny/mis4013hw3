@@ -8,9 +8,6 @@
       color: #000; /* Black text */
       border: 1px solid #ddd; /* Subtle border */
     }
-    .btn-beige:hover {
-      background-color: #e6e6cc; /* Slightly darker beige on hover */
-    }
   </style>
 </head>
 <body>
