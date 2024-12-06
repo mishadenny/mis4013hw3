@@ -45,3 +45,42 @@
     </tbody>
   </table>
 </div>
+<div class="row mt-5">
+  <div class="col">
+    <h2>Platform Distribution by Show Count</h2>
+    <canvas id="platformChart" style="width:100%;max-width:600px;"></canvas>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script>
+<?php
+// Prepare data for the chart
+$chartData = [];
+$platformWithCounts->data_seek(0); // Reset the pointer to fetch data again
+while ($platform = $platformWithCounts->fetch_assoc()) {
+    $chartData['labels'][] = $platform['platform_name'];
+    $chartData['data'][] = (int)$platform['show_count']; // Cast to integer
+}
+?>
+const platformLabels = <?php echo json_encode($chartData['labels']); ?>;
+const platformData = <?php echo json_encode($chartData['data']); ?>;
+const platformColors = platformLabels.map((_, i) => `hsl(${(i * 50) % 360}, 70%, 50%)`);
+
+new Chart(document.getElementById("platformChart"), {
+  type: "doughnut",
+  data: {
+    labels: platformLabels,
+    datasets: [{
+      backgroundColor: platformColors,
+      data: platformData
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Platform Distribution by Show Count"
+    }
+  }
+});
+</script>
