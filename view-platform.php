@@ -1,9 +1,8 @@
 <div class="row mt-5">
   <!-- Table Section -->
   <div class="col-md-6">
-    <h2>Platform List</h2> <!-- Added Title for the Platform Table -->
     <div class="table-responsive">
-      <table class="table table-striped">
+      <table class="table table-striped">>
         <thead>
           <tr>
             <th>ID</th>
@@ -16,7 +15,8 @@
         </thead>
         <tbody>
           <?php 
-          while ($platform = $platformWithCounts->fetch_assoc()) { ?>
+          while ($platform = $platformWithCounts->fetch_assoc()) { // Changed variable name
+          ?>
             <tr>
               <td><?php echo $platform['platform_id']; ?></td>
               <td><?php echo $platform['platform_name']; ?></td>
@@ -40,7 +40,9 @@
                 </form>
               </td>
             </tr>
-          <?php } ?>
+          <?php
+          }
+          ?>
         </tbody>
       </table>
     </div>
@@ -48,7 +50,7 @@
 
   <!-- Donut Chart Section -->
   <div class="col-md-6">
-    <h2>Platform Distribution by Show Count</h2> <!-- Added Title for Donut Chart -->
+    <h2>Platform Distribution by Show Count</h2>
     <canvas id="platformChart" style="width:100%;max-width:600px;"></canvas>
   </div>
 </div>
@@ -66,7 +68,7 @@ while ($platform = $platformWithCounts->fetch_assoc()) {
 ?>
 const platformLabels = <?php echo json_encode($chartData['labels']); ?>;
 const platformData = <?php echo json_encode($chartData['data']); ?>;
-const platformColors = platformLabels.map((_, i) => `hsl(${(i * 50) % 360}, 70%, 50%)`);
+const platformColors = platformLabels.map((_, i) => hsl(${(i * 50) % 360}, 70%, 50%));
 
 new Chart(document.getElementById("platformChart"), {
   type: "doughnut",
@@ -74,4 +76,14 @@ new Chart(document.getElementById("platformChart"), {
     labels: platformLabels,
     datasets: [{
       backgroundColor: platformColors,
-      data: plat
+      data: platformData
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Platform Distribution by Show Count"
+    }
+  }
+});
+</script>
