@@ -20,7 +20,10 @@
             <label for="sTitle<?php echo $course['show_id']; ?>" class="form-label">Show Title</label>
             <input type="text" class="form-control" id="sTitle<?php echo $course['show_id']; ?>" name="sTitle" value="<?php echo htmlspecialchars($course['show_title']); ?>">
           </div>
-
+           <div class="mb-3">
+            <label for="platformID<?php echo $course['show_id']; ?>" class="form-label">Platform</label>
+            <input type="text" class="form-control" id="platformID<?php echo $course['platform_id']; ?>" name="platformID" value="<?php echo htmlspecialchars($course['platform_id']); ?>">
+          </div>
           <div class="mb-3">
             <label for="sGenre<?php echo $course['show_id']; ?>" class="form-label">Show Genre</label>
             <input type="text" class="form-control" id="sGenre<?php echo $course['show_id']; ?>" name="sGenre" value="<?php echo htmlspecialchars($course['genre']); ?>">
@@ -30,7 +33,7 @@
             <label for="sLink<?php echo $course['show_id']; ?>" class="form-label">Show Link</label>
             <input type="text" class="form-control" id="sLink<?php echo $course['show_id']; ?>" name="sLink" value="<?php echo htmlspecialchars($course['link']); ?>">
           </div>
-
+    
           <div class="mb-3">
             <label for="sImage<?php echo $course['show_id']; ?>" class="form-label">Image URL</label>
             <!-- Pre-fill the image URL from the database -->
