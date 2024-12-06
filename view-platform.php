@@ -1,7 +1,7 @@
 <div class="row mt-5">
   <!-- Table Section -->
   <div class="col-md-6">
-    <h2>Platform List</h2>
+    <h2>Platforms</h2>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
