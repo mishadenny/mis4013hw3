@@ -23,7 +23,8 @@
            <div class="mb-3">
             <label for="platformID<?php echo $course['show_id']; ?>" class="form-label">Platform</label>
             <input type="text" class="form-control" id="platformID<?php echo $course['platform_id']; ?>" name="platformID" value="<?php echo htmlspecialchars($course['platform_id']); ?>">
-          </div>
+            <?php include "view-platform-input-list.php"; ?>
+           </div>
           <div class="mb-3">
             <label for="sGenre<?php echo $course['show_id']; ?>" class="form-label">Show Genre</label>
             <input type="text" class="form-control" id="sGenre<?php echo $course['show_id']; ?>" name="sGenre" value="<?php echo htmlspecialchars($course['genre']); ?>">
