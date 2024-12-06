@@ -11,7 +11,7 @@
   <?php 
     while ($instructor = $instructors->fetch_assoc()) {
   ?>
-    <div class="card" style="background-color: #f5f5dc; margin: 10px;"> <!-- Beige background -->
+    <div class="card" style="background-color: #f5f5dc; margin: 10px;"> 
       <div class="card-body">
         <h5 class="card-title"><?php echo $instructor['actor_name']; ?></h5>
         <ul class="list-group">
@@ -19,7 +19,7 @@
             $courses = selectCoursesByInstructors($instructor['actor_id']);
             while ($course = $courses->fetch_assoc()) {
           ?>
-            <li class="list-group-item" style="background-color: #fff;"> <!-- White background for contrast -->
+            <li class="list-group-item" style="background-color: #fff;"> 
               Title: <?php echo $course['show_title']; ?> 
               Title Episode: <?php echo $course['title_episode']; ?> 
               Season: <?php echo $course['season_number']; ?> 
