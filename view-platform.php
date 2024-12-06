@@ -19,7 +19,6 @@
           <td><?php echo $platform['platform_id']; ?></td>
           <td><?php echo $platform['platform_name']; ?></td>
           <td><?php echo $platform['headquarters']; ?></td>
-          <td><?php echo $platform['show_count']; ?></td> <!-- Display Show Count -->
           <td>
             <?php include "view-platform-editform.php"; ?>
           </td>
