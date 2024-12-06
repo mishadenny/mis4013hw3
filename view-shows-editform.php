@@ -20,11 +20,6 @@
             <label for="sTitle<?php echo $course['show_id']; ?>" class="form-label">Show Title</label>
             <input type="text" class="form-control" id="sTitle<?php echo $course['show_id']; ?>" name="sTitle" value="<?php echo htmlspecialchars($course['show_title']); ?>">
           </div>
-           <div class="mb-3">
-            <label for="platformID<?php echo $course['show_id']; ?>" class="form-label">Platform</label>
-            <input type="text" class="form-control" id="platformID<?php echo $course['platform_id']; ?>" name="platformID" value="<?php echo htmlspecialchars($course['platform_id']); ?>">
-            <?php include "view-platform-input-list.php"; ?>
-           </div>
             <div class="mb-3">
                 <label for="platformID<?php echo $course['show_id']; ?>" class="form-label">Platform</label>
                 <?php
