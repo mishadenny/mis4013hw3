@@ -68,7 +68,7 @@ while ($platform = $platformWithCounts->fetch_assoc()) {
 ?>
 const platformLabels = <?php echo json_encode($chartData['labels']); ?>;
 const platformData = <?php echo json_encode($chartData['data']); ?>;
-const platformColors = platformLabels.map((_, i) => hsl(${(i * 50) % 360}, 70%, 50%));
+const platformColors = platformLabels.map((_, i) => `hsl(${(i * 50) % 360}, 70%, 50%)`);
 
 new Chart(document.getElementById("platformChart"), {
   type: "doughnut",
