@@ -4,12 +4,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
     .btn-beige {
-      background-color: #f5f5dc; /* Beige color */
-      color: #000; /* Black text */
-      border: 1px solid #ddd; /* Subtle border */
+      background-color: #f5f5dc; 
+      color: #000; 
+      border: 1px solid #ddd; 
     }
     .btn-beige:hover {
-      background-color: #e6e6cc; /* Slightly darker beige on hover */
+      background-color: #e6e6cc;
     }
   </style>
 </head>
@@ -74,7 +74,7 @@ function sortTable(columnIndex) {
   table = document.getElementById("actorsTable");
   switching = true;
 
-  // Determine if the column should be sorted numerically
+
   isNumeric = columnIndex === 0 || columnIndex === 2; // Columns 0 (ID) and 2 (Age)
 
   while (switching) {
@@ -87,13 +87,13 @@ function sortTable(columnIndex) {
       y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
 
       if (isNumeric) {
-        // Compare as numbers
+
         if (parseInt(x.innerHTML) > parseInt(y.innerHTML)) {
           shouldSwitch = true;
           break;
         }
       } else {
-        // Compare as strings
+
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
           shouldSwitch = true;
           break;
