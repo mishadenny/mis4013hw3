@@ -4,12 +4,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
     .btn-beige {
-      background-color: #f5f5dc; /* Beige color */
-      color: #000; /* Black text */
-      border: 1px solid #ddd; /* Subtle border */
+      background-color: #f5f5dc; 
+      color: #000; 
+      border: 1px solid #ddd; 
     }
     .btn-beige:hover {
-      background-color: #e6e6cc; /* Slightly darker beige on hover */
+      background-color: #e6e6cc; 
     }
   </style>
 </head>
@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<!-- Sorting Buttons -->
+
 <div class="row mb-4">
   <div class="col">
     <button onclick="sortCards('id')" class="btn btn-beige">ID</button>
@@ -82,15 +82,12 @@ function sortCards(criteria) {
     const valueB = b.dataset[criteria].toLowerCase();
 
     if (criteria === 'id') {
-      // Sort numerically for ID
       return parseInt(valueA) - parseInt(valueB);
     } else {
-      // Sort alphabetically for Title and Genre
       return valueA.localeCompare(valueB);
     }
   });
 
-  // Reattach sorted cards to the container
   cards.forEach(card => container.appendChild(card));
 }
 </script>
