@@ -2,7 +2,7 @@
   <!-- Table Section -->
   <div class="col-md-6">
     <div class="table-responsive">
-      <table class="table">
+      <table class="table table-striped">>
         <thead>
           <tr>
             <th>ID</th>
