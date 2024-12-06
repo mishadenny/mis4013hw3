@@ -6,15 +6,9 @@ $pageTitle = "Shows";
 include "view-header.php";
 
 if (isset($_POST['actionType'])) {
-    $imagePath = null;
-
-    // Handle image upload if provided
-    if (isset($_FILES['sImage']) && $_FILES['sImage']['error'] == 0) {
-       
-
     switch ($_POST['actionType']) {
         case "Add":
-            if (InsertShow($_POST['sTitle'], $_POST['sGenre'], $_POST['sLink'], $_POST['platformID'],  $_POST['sImage'])) {
+            if (InsertShow($_POST['sTitle'], $_POST['sGenre'], $_POST['sLink'], $_POST['platformID'], $_POST['sImage'])) {
                 echo '<div class="alert alert-success" role="alert">Show Added</div>';
             } else {
                 echo '<div class="alert alert-danger" role="alert">Error Adding Show</div>';
