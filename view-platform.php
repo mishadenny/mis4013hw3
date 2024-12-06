@@ -1,5 +1,4 @@
 <div class="row mt-5">
-  <!-- Table Section -->
   <div class="col-md-6">
     <h2>Platforms</h2>
     <div class="table-responsive">
@@ -16,7 +15,7 @@
         </thead>
         <tbody>
           <?php 
-          while ($platform = $platformWithCounts->fetch_assoc()) { // Changed variable name
+          while ($platform = $platformWithCounts->fetch_assoc()) { 
           ?>
             <tr>
               <td><?php echo $platform['platform_id']; ?></td>
@@ -49,7 +48,6 @@
     </div>
   </div>
 
-  <!-- Donut Chart Section -->
   <div class="col-md-6">
     <h2>Platform Distribution by Show Count</h2>
     <canvas id="platformChart" style="width:100%;max-width:600px;"></canvas>
@@ -59,12 +57,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script>
 <?php
-// Prepare data for the chart
 $chartData = [];
 $platformWithCounts->data_seek(0); // Reset the pointer to fetch data again
 while ($platform = $platformWithCounts->fetch_assoc()) {
     $chartData['labels'][] = $platform['platform_name'];
-    $chartData['data'][] = (int)$platform['show_count']; // Cast to integer
+    $chartData['data'][] = (int)$platform['show_count']; 
 }
 ?>
 const platformLabels = <?php echo json_encode($chartData['labels']); ?>;
