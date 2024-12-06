@@ -25,6 +25,14 @@
             <input type="text" class="form-control" id="platformID<?php echo $course['platform_id']; ?>" name="platformID" value="<?php echo htmlspecialchars($course['platform_id']); ?>">
             <?php include "view-platform-input-list.php"; ?>
            </div>
+            <div class="mb-3">
+                <label for="platformID<?php echo $course['show_id']; ?>" class="form-label">Platform</label>
+                <?php
+                $platformList = selectPlatformsForInput(); // Fetch platforms for dropdown
+                $selectedPlatform = $course['platform_id']; // Set the selected platform for this course
+                include "view-platform-input-list.php"; // Render the dropdown
+                ?>
+            </div>
           <div class="mb-3">
             <label for="sGenre<?php echo $course['show_id']; ?>" class="form-label">Show Genre</label>
             <input type="text" class="form-control" id="sGenre<?php echo $course['show_id']; ?>" name="sGenre" value="<?php echo htmlspecialchars($course['genre']); ?>">
