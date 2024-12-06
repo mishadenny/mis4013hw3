@@ -8,7 +8,6 @@
             <th>ID</th>
             <th>Name</th>
             <th>Headquarters</th>
-            <th>Show Count</th> <!-- Added Show Count column -->
             <th></th>
             <th></th>
             <th></th>
@@ -22,7 +21,6 @@
               <td><?php echo $platform['platform_id']; ?></td>
               <td><?php echo $platform['platform_name']; ?></td>
               <td><?php echo $platform['headquarters']; ?></td>
-              <td><?php echo $platform['show_count']; ?></td> <!-- Display Show Count -->
               <td>
                 <?php include "view-platform-editform.php"; ?>
               </td>
