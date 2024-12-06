@@ -10,14 +10,7 @@ if (isset($_POST['actionType'])) {
 
     // Handle image upload if provided
     if (isset($_FILES['sImage']) && $_FILES['sImage']['error'] == 0) {
-        $targetDir = "uploads/";
-        $targetFile = $targetDir . basename($_FILES["sImage"]["name"]);
-        if (move_uploaded_file($_FILES["sImage"]["tmp_name"], $targetFile)) {
-            $imagePath = $targetFile;
-        } else {
-            echo '<div class="alert alert-danger" role="alert">Error Uploading Image</div>';
-        }
-    }
+       
 
     switch ($_POST['actionType']) {
         case "Add":
