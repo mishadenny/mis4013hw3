@@ -1,4 +1,3 @@
-<!-- PHP for handling form actions -->
 <?php
 require_once("util-db.php");
 require_once("model-instructors-with-courses.php");
